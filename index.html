@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Do You Love Me?</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+      body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          background-color: #d4edda;
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          overflow: hidden;
+      }
+      .container {
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+      }
+      .card {
+          width: 90%;
+          max-width: 400px;
+          background-color: #f58585;
+          padding: 40px;
+          border-radius: 30px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          margin-bottom: 20px;
+      }
+      .button-container {
+          display: flex;
+          justify-content: space-between;
+          width: 300px;
+          margin-top: 10px;
+      }
+      .button {
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          font-size: 16px;
+          cursor: pointer;
+          border-radius: 20px;
+          width: 120px;
+      }
+      .button1 { background-color: #0ad1f0; }
+      .button2 { background-color: #fc0000; position: relative; }
+      #congrats {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: #d4edda;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          text-align: center;
+      }
+      .congrats-card {
+          background-color: white;
+          padding: 30px;
+          border-radius: 20px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          text-align: center;
+          max-width: 500px;
+      }
+      .gif-container {
+          position: absolute;
+          width: 130px;
+          height: auto;
+          border-radius: 10px;
+      }
+      .gif-left {
+          top: 20%;
+          left: 5%;
+          transform: translateY(-50%);
+      }
+      .gif-right {
+          top: 20%;
+          right: 5%;
+          transform: translateY(-50%);
+      }
+      .gif-bottom {
+          bottom: 5%;
+          left: 40%;
+          transform: translateX(-50%);
+      }
+  </style>
+</head>
+<body>
+  <div id="main" class="container">
+      <div class="card">
+          <h1 style="color: white;">Do you love me?</h1>
+      </div>
+      <div class="button-container">
+          <button class="button button1" onclick="showCongrats()">Yes</button>
+          <button class="button button2" id="noButton">No</button>
+      </div>
+  </div>
+
+  <div id="congrats">
+      <img src="image3.gif" class="gif-container gif-left">
+      <img src="image2.gif" class="gif-container gif-right">
+      <img src="image1.gif" class="gif-container gif-bottom">
+      <div class="congrats-card">
+          <h3>love din kita yiiieeeee...❤️</h3>
+      </div>
+  </div>
+
+  <script>
+          document.addEventListener("DOMContentLoaded", function() {
+          document.getElementById("main").style.display = "flex";
+          document.getElementById("congrats").style.display = "none";
+
+          const noButton = document.getElementById("noButton");
+
+          noButton.addEventListener("click", function() {
+              const maxX = window.innerWidth - noButton.clientWidth;
+              const maxY = window.innerHeight - noButton.clientHeight;
+              
+              const randomX = Math.floor(Math.random() * maxX);
+              const randomY = Math.floor(Math.random() * maxY);
+              
+              noButton.style.position = "absolute";
+              noButton.style.left = randomX + "px";
+              noButton.style.top = randomY + "px";
+          });
+      });
+
+      function showCongrats() {
+          document.getElementById("main").style.display = "none";
+          document.getElementById("congrats").style.display = "flex";
+      }
+  </script>
+</body>
+</html>
